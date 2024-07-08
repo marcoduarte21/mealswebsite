@@ -1,0 +1,109 @@
+.containerDetails{
+    text-align: center;
+}
+
+.receta{
+    background-size: cover;
+    width: 100%;
+    border-top: 1px solid rgba(7, 7, 7, 0.1);
+}
+
+.receta img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.ingredientes, .instruccions, .containerYoutube{
+    display: grid;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ingredientes .ingredientsList ul {
+    list-style-type: none;
+    padding-left: 60px;
+}
+
+.ingredientes li::before {
+    content: '•'; 
+    color: orangered; 
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-size: 25px;
+}
+
+.ingredientsList{
+    display: flex;
+    gap: 20px;
+}
+
+.ingredientsList ul{
+    text-align: justify;
+}
+
+.instruccions .instructions2 p{
+    text-align: justify;
+    width: 300px;
+}
+
+.instruccions p strong{
+    color: orangered;
+}
+
+.ListOfInstructions{
+    display: flex;
+    gap: 50px;
+    margin: 0 100px;
+}
+
+.Centro a {
+    text-decoration: none;
+}
+
+#buttonBackHome{
+    font-size: 10px;
+    position: absolute;
+    margin: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: orangered;
+    padding: 4px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1040px){
+    
+    .containerYoutube iframe{
+        width: 500px;
+    }
+
+    .instruccions .instructions2 p{
+        width: 250px;
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+        
+    .ingredientsList{
+        flex-direction: column;
+        gap:0;
+    }
+
+    .ListOfInstructions{
+        flex-direction: column;
+        gap: 0;
+        margin: auto;
+    }
+
+    .instruccions .instructions2 p{
+        width: 300px;
+    }
+
+    .containerYoutube iframe{
+        width: 343px;
+    }
+} 

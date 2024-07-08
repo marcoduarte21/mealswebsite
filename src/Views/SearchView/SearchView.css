@@ -1,0 +1,16 @@
+
+.searchTitle{
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: orange;
+}
+
+.warning{
+    position: relative;
+    font-size: 35px;
+    text-align: center;
+    top: 150px;
+    font-weight: bold;
+}

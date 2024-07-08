@@ -1,106 +1,118 @@
-import { Header } from "./Header"
-import { Recipes } from "./Recipes"
-import { CardRecipe } from "./CardRecipe"
-import  FavoritesRecipes  from "./FavoriteRecipes"
-import {FavoriteRecipe} from "./FavoriteRecipe"
-import { RecipeOfTheDay} from "./RecipeOfTheDay"
-import arrozConLeche from '../assets/img/arroz-con-leche.jpg'
-import cordonBlue from '../assets/img/cordon-blue.jpg'
-import galloPinto from '../assets/img/gallo-pinto.jpg'
-import pastaConCamarones from '../assets/img/pasta-camarones.jpg'
-import tamal from '../assets/img/tamal.avif'
-import 'https://kit.fontawesome.com/9aac1473ee.js'
-import { useEffect, useState } from "react"
-import { Recipe } from "../models/Recipe"
-import { AxiosResponse } from 'axios';
-import * as apiMeals from '../api/apiMeals'
+import React, { useEffect, useState } from "react";
+import { Recipes } from "./Recipes";
+import { CardRecipe } from "./CardRecipe";
+import FavoritesRecipes from "./FavoriteRecipes";
+import { FavoriteRecipe } from "./FavoriteRecipe";
+import { RecipeOfTheDay } from "./RecipeOfTheDay";
+import "https://kit.fontawesome.com/9aac1473ee.js";
+import { Recipe } from "../models/Recipe";
+import { AxiosResponse } from "axios";
+import * as apiMeals from "../api/apiMeals";
 
-interface HomeProps{
+interface HomeProps {}
 
-}
+export const Home: React.FC<HomeProps> = () => {
+  const [listRecipes, setListRecipes] = useState<Recipe[]>([]);
+  const [recipeOfTheDay, setRecipeOfTheDay] = useState<Recipe>({
+    idMeal: "",
+    strMeal: "",
+    strMealThumb: "",
+  });
+  const [favoriteRecipes, setFavoriteRecipes] = useState<Recipe[]>(() => {
+    const savedFavorites = localStorage.getItem("favoriteRecipes");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
 
-export const Home: React.FC<HomeProps> = ({}) =>{
+  useEffect(() => {
+    document.title = "allrecipes";
+    getListRecipes();
+    getRecipeOfTheDay();
+  }, []);
 
-    const[ListRecipes, setListRecipes] = useState<Recipe []> ([]);
-    const[recipeOfTheDay, setRecipeOfTheDay] = useState<Recipe> ({idMeal:'', strMeal:'', strMealThumb: ''});
+  useEffect(() => {
+    localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
+  }, [favoriteRecipes]);
 
-    useEffect(()=>{
-        document.title = "allrecipes";
-        getListRecipes();
-        getRecipeOfTheDay();
-    },[])
-
-    const getListRecipes = async() =>{
-
-        try{
-            const response: AxiosResponse = await apiMeals.getMealsByFirstLetter("b");
-            setListRecipes(response.data.meals);
-        } catch (error){
-            console.log(error);
-        }
+  const getListRecipes = async () => {
+    try {
+      const response: AxiosResponse = await apiMeals.getMealsByName("a");
+      setListRecipes(response.data.meals);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const getRecipeOfTheDay = async() =>{
-        try{
-            const response: AxiosResponse = await apiMeals.getRecipeofTheDay();
-            setRecipeOfTheDay(response.data.meals[0]);
-        }catch(error){
-            console.log(error);
-        }
+  const getRecipeOfTheDay = async () => {
+    try {
+      const response: AxiosResponse = await apiMeals.getRecipeofTheDay();
+      setRecipeOfTheDay(response.data.meals[0]);
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const recipes = [
-        {
-            id: 1,
-            name: 'Arroz con leche',
-            img: arrozConLeche
-        },
-        {
-            id: 2,
-            name: 'Cordon Blue',
-            img: cordonBlue
-        },
-        {
-            id: 3,
-            name: 'Tamal',
-            img: tamal
-        },
-        {
-            id: 4,
-            name: 'Gallo pinto',
-            img: galloPinto        },
-        {
-            id: 5,
-            name: 'Pasta',
-            img: pastaConCamarones
-        }
+  const handleFavoriteToggle = (id: string, title: string, img: string) => {
+    setFavoriteRecipes((prevFavorites) => {
+      const isFavorite = prevFavorites.some((recipe) => recipe.idMeal === id);
+      if (isFavorite) {
+        return prevFavorites.filter((recipe) => recipe.idMeal !== id);
+      } else {
+        return [
+          { idMeal: id, strMeal: title, strMealThumb: img },
+          ...prevFavorites,
+        ];
+      }
+    });
+  };
 
-    ];
+  const isFavorite = (id: string) => {
+    return favoriteRecipes.some((recipe) => recipe.idMeal === id);
+  };
 
-    return (
-        <div className="container">
-        <Header />
-        <FavoritesRecipes>
-            {recipes.map(recipe => 
-            <div className="image" key={recipe.id}>
-            <FavoriteRecipe name={recipe.name} alt={recipe.name} img={recipe.img}/>
-            </div>
-                                    )}
-        </FavoritesRecipes>
+  return (
+    <div className="container">
+      <FavoritesRecipes>
+        {favoriteRecipes.map((recipe) => (
+          <div className="image" key={recipe.idMeal}>
+            <FavoriteRecipe
+              name={recipe.strMeal}
+              alt={recipe.strMeal}
+              img={recipe.strMealThumb}
+              id={recipe.idMeal}
+            />
+          </div>
+        ))}
+      </FavoritesRecipes>
 
-        <RecipeOfTheDay>
+      <RecipeOfTheDay>
         <div className="card-recipe">
-            <CardRecipe title={recipeOfTheDay.strMeal} alt={recipeOfTheDay.strMeal} img={recipeOfTheDay.strMealThumb} id={recipeOfTheDay.idMeal}/>
-            </div>
-        </RecipeOfTheDay>
-
-        <Recipes>
-            {ListRecipes.map(recipe =>
-            <div className="card-recipe" key={recipe.idMeal}>
-            <CardRecipe title={recipe.strMeal} alt={recipe.strMeal} img={recipe.strMealThumb} id={recipe.idMeal}/>
-            </div>
-                    )}
-        </Recipes>
+          <CardRecipe
+            title={recipeOfTheDay.strMeal}
+            alt={recipeOfTheDay.strMeal}
+            img={recipeOfTheDay.strMealThumb}
+            id={recipeOfTheDay.idMeal}
+            onFavoriteToggle={handleFavoriteToggle}
+            isFavorite={isFavorite(recipeOfTheDay.idMeal)}
+            isRecipeOfTheDay={true}
+          />
         </div>
-    )
-}
+      </RecipeOfTheDay>
+
+      <Recipes>
+        {listRecipes.map((recipe) => (
+          <div className="card-recipe" key={recipe.idMeal}>
+            <CardRecipe
+              title={recipe.strMeal}
+              alt={recipe.strMeal}
+              img={recipe.strMealThumb}
+              id={recipe.idMeal}
+              onFavoriteToggle={handleFavoriteToggle}
+              isFavorite={isFavorite(recipe.idMeal)}
+              isRecipeOfTheDay={false}
+            />
+          </div>
+        ))}
+      </Recipes>
+    </div>
+  );
+};
