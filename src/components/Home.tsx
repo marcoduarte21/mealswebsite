@@ -72,7 +72,8 @@ export const Home: React.FC<HomeProps> = () => {
   return (
     <div className="container">
       <FavoritesRecipes>
-        {favoriteRecipes.map((recipe) => (
+        {(favoriteRecipes.length > 0) ? 
+        favoriteRecipes.map((recipe) => (
           <div className="image" key={recipe.idMeal}>
             <FavoriteRecipe
               name={recipe.strMeal}
@@ -81,7 +82,10 @@ export const Home: React.FC<HomeProps> = () => {
               id={recipe.idMeal}
             />
           </div>
-        ))}
+        ))
+      : <h3 className="warningFavorite">there's no favorites recipes yet.</h3>
+      }
+      
       </FavoritesRecipes>
 
       <RecipeOfTheDay>

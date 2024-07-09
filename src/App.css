@@ -244,6 +244,20 @@ header #navBar {
   cursor: pointer;
 }
 
+.warning{
+  position: relative;
+  font-size: 35px;
+  text-align: center;
+  top: 150px;
+  font-weight: bold;
+}
+
+.warningFavorite{
+  position: relative;
+  top: -40%;
+  left: 25%;
+}
+
 
 @media only screen and (width >= 768px) {
   section .favoritesRecipes {
@@ -265,6 +279,10 @@ header #navBar {
 
   #bars {
     display: block;
+  }
+
+  .warningFavorite{
+    left: 35%;
   }
 
 }
@@ -317,6 +335,10 @@ header #navBar {
 
   nav ul li a:hover {
     color: #fa6202;
+  }
+
+  .warningFavorite{
+    left: 40%;
   }
   
 }
