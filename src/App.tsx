@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
        <Header />
       <Routes>
-        <Route path='https://marcoduarte21.github.io/mealswebsite/' element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route path='/search/:query' element={<SearchView />} />
         <Route path='/recipe/:id' element={<DetailsRecipe />} />
       </Routes>
