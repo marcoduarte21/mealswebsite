@@ -76,12 +76,13 @@ export const DetailsRecipe: React.FC<DetailsRecipeProps> = () => {
     const rows = [];
     for (let i = 0; i < ingredients.length; i += 3) {
       rows.push(
-        <tr key={i}>
+        <tr key={i} className="ingredientRow">
           {ingredients.slice(i, i + 3).map((ing, j) => (
             <td key={j}>
               <img
-                src={`https://www.themealdb.com/images/ingredients/${ing.ingredient}-Small.png`}
+                src={`https://www.themealdb.com/images/ingredients/${ing.ingredient}-small.png`}
                 alt={ing.ingredient}
+                className="ingredientImage"
               />
               <p>
                 {ing.measure} {ing.ingredient}
@@ -111,14 +112,14 @@ export const DetailsRecipe: React.FC<DetailsRecipeProps> = () => {
           <h1>{meal.strMeal}</h1>
         </div>
         <div className="ingredientes">
-          <h2>Ingredientes</h2>
+          <h2>Ingredients</h2>
           <table>
             <tbody>{getListIngredients(ListIngredients(meal))}</tbody>
           </table>
         </div>
         {meal.strInstructions && (
           <div className="instruccions">
-            <h2>Instrucciones de la receta</h2>
+            <h2>Recipe's instructions</h2>
             <div className="ListOfInstructions">
               <div className="instructions2">
                 {ListaDeInstrucciones(meal.strInstructions)}

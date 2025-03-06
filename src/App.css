@@ -258,6 +258,19 @@ header #navBar {
   left: 25%;
 }
 
+.ingredientImage{
+  margin: 20px;
+}
+
+.ingredientImage{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px #899590;
+  overflow: hidden;
+  border: 3px solid white;
+  transition: all ease 300ms;
+}
 
 @media only screen and (width >= 768px) {
   section .favoritesRecipes {
