@@ -59,7 +59,7 @@ export const SearchView: React.FC<SearchViewProps> = () => {
       <div className="searchResults container">
         {(RecipesByQuery) && 
           <h2 className="searchTitle">
-            Results for "{query}" ({RecipesByQuery.length} recipes)
+            Results for "{query}" ({RecipesByQuery?.length} recipes)
           </h2>
         }
 

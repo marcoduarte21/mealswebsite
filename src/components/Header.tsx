@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = () => {
             type="text"
             name="searchFilter"
             id="searchFilter"
-            placeholder="Search any recipe"
+            placeholder="Search recipe"
             onChange={(e) => setQuery(e.target.value.toLowerCase())}
             onKeyUp={e => {
               if(e.key === "Enter"){
