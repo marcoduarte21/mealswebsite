@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   function handleClick() {
     const sidebar = document.querySelector(".sidebar");
@@ -60,7 +61,7 @@ export const Header: React.FC<HeaderProps> = () => {
             onChange={(e) => setQuery(e.target.value.toLowerCase())}
             onKeyUp={e => {
               if(e.key === "Enter"){
-                document.location.href = `/search/${query}`;
+                navigate(`/search/${query}`);
               }
               }}
           />
