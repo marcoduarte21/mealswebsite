@@ -60,8 +60,7 @@ export const Header: React.FC<HeaderProps> = () => {
             onChange={(e) => setQuery(e.target.value.toLowerCase())}
             onKeyUp={e => {
               if(e.key === "Enter"){
-                setQuery(e.key)
-                document.location.href = `/search/${query}`
+                document.location.href = `/search/${query}`;
               }
               }}
           />

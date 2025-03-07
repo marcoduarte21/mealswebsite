@@ -59,7 +59,7 @@ export const SearchView: React.FC<SearchViewProps> = () => {
       <div className="searchResults container">
         {(RecipesByQuery) && 
           <h2 className="searchTitle">
-            Resultados para "{query}" ({RecipesByQuery.length} recetas)
+            Results for "{query}" ({RecipesByQuery.length} recipes)
           </h2>
         }
 
@@ -80,7 +80,7 @@ export const SearchView: React.FC<SearchViewProps> = () => {
             ))}
           </Recipes>
         ) : (
-          <p className="warning">There's no recipes that matching "{query}"</p>
+          <p className="warning">There's no recipes that match with "{query}"</p>
         )}
       </div>
     </>
