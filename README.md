@@ -61,4 +61,7 @@ A responsive and interactive recipe browser built with **React** and **TypeScrip
 ```bash
    https://mealswebsite.netlify.app/
 ```
+
+## 📄 License
+This project is open-source and available under the MIT License.
 ---
