@@ -1,20 +1,65 @@
-## Meals recipe system
 
-Thi is a Web application that allows users to search and explore various meals and recipes, developed with React and
-TypeScript.
-○ Consumed public REST APIs to retrieve meal data, including ingredients and recipes.
-○ Integrated a ”favorites” feature using localStorage to retain user preferences across sessions.
-○ Built a responsive design focused on mobile devices using CSS Flexbox and Media Queries.
-○ Improved navigation with React Router for a smooth user experience.
+---
 
-## installation
+## 🍽 Meals Recipe Website
 
-git clone https://github.com/marcoduarte21/mealswebsite.git
+```markdown
+# Meals Recipe Web App
 
-## install dependencies
+A responsive and interactive recipe browser built with **React** and **TypeScript** that allows users to search, explore, and save their favorite meals.
 
-npm i
+## 🍜 Features
 
-## run dev
+- 🔎 **Meal Search**: Look up meals by name or category using a public API.
+- 💾 **Favorites**: Mark meals as favorites and save them locally with `localStorage`.
+- 📱 **Responsive UI**: Designed for mobile-first experiences with CSS Flexbox and Media Queries.
+- 🌐 **Smooth Navigation**: Integrated with `React Router` for a seamless SPA experience.
 
-npm start
+## 🛠 Tech Stack
+
+- React + TypeScript
+- CSS Flexbox
+- TheMealDB API
+- React Router
+- LocalStorage
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js v16+
+- npm
+- React v18+
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+        git clone https://github.com/marcoduarte21/mealswebsite.git
+   ```
+
+2. Navigate to the project directory:
+
+```bash
+   cd mealswebsite
+```
+
+3. Install dependencies:
+
+```bash
+   npm install
+```
+
+4. Start the development server:
+
+```bash
+   npm start
+```
+
+## 🧪 Live Demo
+
+```bash
+   https://mealswebsite.netlify.app/
+```
+---
