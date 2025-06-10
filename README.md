@@ -3,7 +3,6 @@
 
 ## 🍽 Meals Recipe Website
 
-```markdown
 # Meals Recipe Web App
 
 A responsive and interactive recipe browser built with **React** and **TypeScript** that allows users to search, explore, and save their favorite meals.
