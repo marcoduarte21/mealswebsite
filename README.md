@@ -63,5 +63,6 @@ A responsive and interactive recipe browser built with **React** and **TypeScrip
 ```
 
 ## 📄 License
-This project is open-source and available under the MIT License.
+    
+    This project is open-source and available under the MIT License.
 ---
